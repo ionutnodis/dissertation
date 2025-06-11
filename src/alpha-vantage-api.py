@@ -57,6 +57,6 @@ def download_1min_intraday(symbol, api_key, months_back=24, output_dir="data"):
     print(f"✅ Saved to {filename}")
     return df_full
 
-symbol = "QQQ"
+symbol = "AAPL"
 api_key = os.getenv("API_KEY")
 df = download_1min_intraday(symbol, api_key, months_back=24)

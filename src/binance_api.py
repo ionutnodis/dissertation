@@ -26,6 +26,7 @@ def get_binance_1min_klines(symbol: str, start_time: str, end_time: str):
     end_ts = int(pd.Timestamp(end_time).timestamp() * 1000)
 
     while start_ts < end_ts:
+        print(f"📦 Downloading from {pd.to_datetime(start_ts, unit='ms')}")
         params = {
             "symbol": symbol,
             "interval": interval,
@@ -41,6 +42,7 @@ def get_binance_1min_klines(symbol: str, start_time: str, end_time: str):
 
         data = response.json()
         if not data:
+            print("⚠️ No more data returned.")
             break
 
         df = pd.DataFrame(data, columns=[
@@ -71,5 +73,5 @@ start = "2023-06-01 04:00:00"
 end = "2025-05-30 20:00:00"
 btc_df = get_binance_1min_klines("BTCUSDT", start, end)
 
-# Optional: Save to CSV
-btc_df.to_csv("BTCUSDT_1min_matched_to_TSLA.csv")
+# Save to CSV
+btc_df.to_csv("BTCUSDT_1min.csv")

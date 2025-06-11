@@ -36,7 +36,7 @@ def ticker_search_csv(keywords: str, api_key: str):
 
 #Example usage
 api_key = os.getenv("API_KEY")
-keyword = "BTC"
+keyword = "apple"
 matches = ticker_search_csv(keyword, api_key)
 
 for match in matches:
